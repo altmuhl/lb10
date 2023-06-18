@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+    h1= title
+    div
+      form
+        fieldset
+          label ID
+          input(type='text', disabled=true, value=location.id)
+          br
+          label ФИО
+          input(type='text', disabled=true, value=location.label)

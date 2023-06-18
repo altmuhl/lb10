@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    div
+        ul
+          li
+            a(href='/') Главная страница
+            if user
+              if can.view_clients
+                li
+                  a(href='/clients') Клиенты
+              if can.view_orders
+                li
+                  a(href='/orders') Заказы
+              if can.view_clients
+                li
+                  a(href='/phs') Фотосессии
+              if can.view_clients
+                li
+                  a(href='/photograph') Фотографы
+              if can.view_clients
+                li
+                  a(href='/location') Локации
+              if can.view_clients
+                li
+                  a(href='/phs_type') Типы фотосессии
+              if can.view_users
+                li
+                  a(href='/users') Пользователи
+              li
+                a(href='', id='Logout') Выйти
+            else
+                li
+                    a(href='', id='Login') Войти

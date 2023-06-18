@@ -1,0 +1,70 @@
+extends ../layout
+
+block content
+    h1= title
+    button(id='create_client') Создать
+    button(id='delete_client') Удалить
+    button(id='update_client') Изменить
+    table
+        tr 
+            th id
+            th Имя
+            th Телефон
+        each item in clients
+            tr
+                td= item.id
+                td= item.label
+                td= item.phone
+
+    div#create_client_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Добавить клиента
+              a#create_client_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inLabel") ФИО
+                  input#inLabel(type="text")
+                div.q-form-data
+                  label(for="inPhone") телефон
+                  input#inPhone(type="text")
+            div.q-buttons
+              a#submit_create_client Создать
+              a#cancel_create_client Отменить
+
+    div#delete_client_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Удалить Клиента
+              a#delete_client_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inpId") ID
+                  select#inpId
+                    each item in clients
+                        option(value=item.id)= item.id 
+            div.q-buttons
+              a#submit_delete_client Удалить
+              a#cancel_delete_client Отменить
+            
+
+    div#update_client_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Изменить информацию о клиенте
+              a#update_client_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inpUpId") ID
+                  select#inpUpId
+                    each item in clients
+                        option(value=item.id)= item.id
+                div.q-form-data
+                  label(for="#inUpLabel") ФИО
+                  input#inUpLabel(type="text")
+                div.q-form-data
+                  label(for="inUpPhone") телефон
+                  input#inUpPhone(type="text")
+            div.q-buttons
+              a#submit_update_client Изменить
+              a#cancel_update_client Отменить

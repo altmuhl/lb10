@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    h1= title
+    div
+      form
+        fieldset
+          label ID
+          input(type='text', disabled=true, value=phs_type.id)
+          br
+          label Тип
+          input(type='text', disabled=true, value=phs_type.date)
+          br
+          label Цена
+          input(type='text', disabled=true, value=phs_type.id_location)
+          br
+          label Цена
+          input(type='text', disabled=true, value=phs_type.id_phg)
+          br
+          label Цена
+          input(type='text', disabled=true, value=phs_type.id_type)

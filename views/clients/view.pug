@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    h1= title
+    div
+      form
+        fieldset
+          label ID
+          input(type='text', disabled=true, value=client.id)
+          br
+          label Клиент
+          input(type='text', disabled=true, value=client.label)
+          br
+          label Номер
+          input(type='text', disabled=true, value=client.phone)

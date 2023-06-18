@@ -1,0 +1,61 @@
+extends ../layout
+
+block content
+    h1= title
+    button(id='create_location') Создать
+    button(id='delete_loc') Удалить
+    button(id='update_location') Изменить
+    table
+        tr 
+            th id
+            th Локация
+        each item in location
+            tr
+                td= item.id
+                td= item.label
+
+    div#create_location_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Добавить локацию
+              a#create_location_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inLabel") Локация
+                  input#inLabel(loc="text")
+            div.q-buttons
+              a#submit_create_location Создать
+              a#cancel_create_location Отменить
+
+    div#delete_loc_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Удалить локацию
+              a#delete_loc_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inpId") ID
+                  select#inpId
+                    each item in location
+                        option(value=item.id)= item.id 
+            div.q-buttons
+              a#submit_delete_loc Удалить
+              a#cancel_delete_loc Отменить
+
+    div#update_location_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Изменть Локацию
+              a#update_location_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inpUpId") ID
+                  select#inpUpId
+                    each item in location
+                        option(value=item.id)= item.id
+                div.q-form-data
+                  label(for="#inUpLabel") Локация
+                  input#inUpLabel(type="text")
+            div.q-buttons
+              a#submit_update_location Изменить
+              a#cancel_update_location Отменить

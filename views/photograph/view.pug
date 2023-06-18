@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    h1= title
+    div
+      form
+        fieldset
+          label ID
+          input(type='text', disabled=true, value=photograph.id)
+          br
+          label ФИО
+          input(type='text', disabled=true, value=photograph.label)
+          br
+          label Номер
+          input(type='text', disabled=true, value=photograph.phone)

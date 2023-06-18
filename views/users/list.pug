@@ -1,0 +1,88 @@
+extends ../layout
+
+block content
+    h1= title
+    button(id='create_user') Добавить пользователя
+    button(id='delete_user') Удалить пользователя
+    button(id='update_user') Изменить пользователя
+    table
+        tr
+            th id
+            th Имя
+            th Логин
+            th Роль
+        each item in users
+            tr
+                td= item.id
+                td= item.fio
+                td= item.login
+                td= item.role
+
+    div#create_users_pop.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Добавить пользователя
+              a#create_user_popup_close(style="position: relative;left: 300px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inpName") ФИО
+                  input#inpName(type="text")
+                div.q-form-data
+                  label(for="inpLogin") Логин
+                  input#inpLogin(type="text")
+                div.q-form-data
+                label(for="inpRole") Роль
+                  select#inpRole
+                    each item in roles
+                        option(value=item.id)= item.code 
+                div.q-form-data
+                  label(for="inpPass") Пароль
+                  input#inpPass(type="text")
+            div.q-buttons
+              a#submit_create_user Добавить
+              a#cancel_create_user Отменить
+
+    div#delete_user_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Удалить пользователя
+              a#delete_user_popup_close(style="position: relative;left: 200px;") X
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inpId") ID
+                  select#inpId
+                    each item in users 
+                        option(value=item.id)= item.id 
+
+            div.q-buttons
+              a#submit_delete_user Удалить
+              a#cancel_delete_user Отменить
+
+    div#update_user_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Изменть данные пользователя
+              a#update_user_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="UpId") ID
+                  select#UpId
+                    each item in users
+                        option(value=item.id)= item.id
+                div.q-form-data
+                  label(for="UpName") ФИО
+                  input#UpName(type="text")
+                div.q-form-data
+                  label(for="UpLogin") Логин
+                  input#UpLogin(type="text")
+                div.q-form-data
+                label(for="UpRole") Роль
+                  select#UpRole
+                    each item in roles
+                        option(value=item.id)= item.code 
+                div.q-form-data
+                  label(for="UpPass") Пароль
+                  input#UpPass(type="text")
+            div.q-buttons
+              a#submit_update_user Изменить
+              a#cancel_update_user Отменить

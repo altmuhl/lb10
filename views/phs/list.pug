@@ -1,0 +1,98 @@
+extends ../layout
+
+block content
+    h1= title
+    button(id='create_phs') Создать
+    button(id='update_phs') Редактировать
+    button(id='delete_phs') Удалить
+    table
+        tr
+            th id
+            th Дата
+            th Тип фотосессии
+            th Локация
+            th Фотограф
+        each item in phs
+            tr
+                td= item.id
+                td= item.date
+                td= item.id_type
+                td= item.id_location 
+                td= item.id_phg
+
+    div#create_phs_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Создать новую фотосессию
+              a#create_phs_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inpDate") Дата
+                  input#inpDate(type="date")
+                div.q-form-data
+                  label(for="inpId_type") тип
+                  select#inpId_type
+                    each item in phs_type
+                        option(value= item.id)= item.label
+                div.q-form-data
+                  label(for="inpId_location") Локация
+                  select#inpId_location
+                    each item in location
+                        option(value= item.id)= item.label
+                div.q-form-data
+                  label(for="inpPhg") фотограф
+                  select#inpPhg
+                    each item in photograph
+                        option(value= item.id)= item.label
+
+            div.q-buttons
+              a#submit_create_phs Создать
+              a#cancel_create_phs Отменить
+
+    div#delete_phs_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Удалить фотосессию
+              a#delete_phs_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inpId") ID
+                  select#inpId
+                    each item in phs
+                        option(value=item.id)= item.id 
+            div.q-buttons
+              a#submit_delete_phs Удалить
+              a#cancel_delete_phs Отменить
+        
+    div#update_phs_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Изменть Фотосессию
+              a#update_phs_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="UpId") ID
+                  select#UpId
+                    each item in phs
+                        option(value=item.id)= item.id
+                div.q-form-data
+                  label(for="UpDate") Дата
+                  input#UpDate(type="date")
+                div.q-form-data
+                  label(for="UpId_type") тип
+                  select#UpId_type
+                    each item in phs_type
+                        option(value= item.id)= item.label
+                div.q-form-data
+                  label(for="UpId_location") Локация
+                  select#UpId_location
+                    each item in location
+                        option(value= item.id)= item.label
+                div.q-form-data
+                  label(for="UpPhg") фотограф
+                  select#UpPhg
+                    each item in photograph
+                        option(value= item.id)= item.label
+            div.q-buttons
+              a#submit_update_phs Изменить
+              a#cancel_update_phs Отменить

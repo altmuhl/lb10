@@ -1,0 +1,69 @@
+extends ../layout
+
+block content
+    h1= title
+    button(id='create_phg') Создать
+    button(id='delete_phg') Удалить
+    button(id='update_phg') Изменить
+    table
+        tr 
+            th id
+            th Имя
+            th Телефон:
+        each item in photograph 
+            tr
+                td= item.id
+                td= item.label
+                td= item.phone 
+
+    div#create_phg_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Добавить 
+              a#create_phg_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inLabel") ФИО
+                  input#inLabel(type="text")
+                div.q-form-data
+                  label(for="inPhone") Телефон
+                  input#inPhone(type="text")
+            div.q-buttons
+              a#submit_create_phg Создать
+              a#cancel_create_phg Отменить
+
+    div#delete_phg_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Удалить 
+              a#delete_phg_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inpId") ID
+                  select#inpId
+                    each item in photograph
+                        option(value=item.id)= item.id 
+            div.q-buttons
+              a#submit_delete_phg Удалить
+              a#cancel_delete_phg Отменить
+          
+    div#update_phg_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Редактировать
+              a#update_phg_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="UpId") ID
+                  select#UpId
+                    each item in photograph
+                        option(value=item.id)= item.id
+                div.q-form-data
+                  label(for="#UpLabel") ФИО
+                  input#UpLabel(type="text")
+                div.q-form-data
+                  label(for="UpPhone") телефон
+                  input#UpPhone(type="text")
+            div.q-buttons
+              a#submit_update_phg Изменить
+              a#cancel_update_phg Отменить

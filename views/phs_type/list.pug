@@ -1,0 +1,70 @@
+extends ../layout
+
+block content
+    h1= title
+    button(id='create_phs_type') Создать
+    button(id='delete_type') Удалить
+    button(id='update_type') Изменить
+    table
+        tr 
+            th id
+            th Тип
+            th цена
+        each item in phs_type 
+            tr
+                td= item.id
+                td= item.label
+                td= item.price 
+
+    div#create_phs_type_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Добавить фотосессию
+              a#create_phs_type_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inLabel") Тип
+                  input#inLabel(type="text")
+                div.q-form-data
+                  label(for="inPrice") Цена
+                  input#inPrice(type="text")
+            div.q-buttons
+              a#submit_create_phs_type Создать
+              a#cancel_create_phs_type Отменить
+
+    div#delete_type_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Удалить фотосессию
+              a#delete_type_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="inpId") ID
+                  select#inpId
+                    each item in phs_type
+                        option(value=item.id)= item.id 
+            div.q-buttons
+              a#submit_delete_type Удалить
+              a#cancel_delete_type Отменить
+
+    div#update_type_popup.q-window
+          div.q-window-block(style="width:400px;height:220px;margin:-150px 0 0 -400px")
+            div.q-window-header Изменить фотосессию
+              a#update_type_popup_close(style="position: relative;left: 300px;") X 
+            div.q-window-body.q-form
+              div.q-window-filters-form
+                div.q-form-data
+                  label(for="UpId") ID
+                  select#UpId
+                    each item in phs_type
+                        option(value=item.id)= item.id
+                div.q-form-data
+                  label(for="#UpLabel") Тип фотосессии
+                  input#UpLabel(type="text")
+                div.q-form-data
+                  label(for="UpPrice") Цена
+                  input#UpPrice(type="text")                  
+            div.q-buttons
+              a#submit_update_type Изменить
+              a#cancel_update_type Отменить
+              
